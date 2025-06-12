@@ -20,7 +20,7 @@
   --text-secondary: #4a5568;
   --border-color: rgba(56, 178, 172, 0.2);
   --shadow-color: rgba(56, 178, 172, 0.1);
-  --header-grad: linear-gradient(90deg, #e2e8f0 0%, #edf2f7 50%, #e2e8f0 100%);
+  --header-grad: linear-gradient(90deg, #d1e4f1 0%, #edf2f7 50%, #d1e4f1 100%);
   --header-text: #2d3748;
 }
 
