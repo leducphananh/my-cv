@@ -1,4 +1,5 @@
 :root {
+  /* Dark Theme (Default) */
   --bg-color: #1a202c;
   --card-color: #2d3748;
   --primary-accent: #4fd1c5;
@@ -7,6 +8,20 @@
   --border-color: rgba(79, 209, 197, 0.2);
   --shadow-color: rgba(79, 209, 197, 0.1);
   --header-grad: linear-gradient(90deg, #1a202c 0%, #2d3748 50%, #1a202c 100%);
+  --header-text: #ffffff;
+}
+
+/* Light Theme */
+:root[data-theme="light"] {
+  --bg-color: #f7fafc;
+  --card-color: #ffffff;
+  --primary-accent: #38b2ac;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --border-color: rgba(56, 178, 172, 0.2);
+  --shadow-color: rgba(56, 178, 172, 0.1);
+  --header-grad: linear-gradient(90deg, #e2e8f0 0%, #edf2f7 50%, #e2e8f0 100%);
+  --header-text: #2d3748;
 }
 
 * {
@@ -25,6 +40,7 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-color);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -35,13 +51,15 @@ body {
 
 /* --- Header --- */
 header {
-  color: white;
+  color: var(--header-text);
   padding: 80px 0;
   text-align: center;
   position: relative;
   background: var(--header-grad);
   background-size: 200% 200%;
   animation: gradient-animation 10s ease infinite;
+  transition: background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes gradient-animation {
@@ -76,6 +94,7 @@ h1 {
   margin-bottom: 10px;
   font-weight: 700;
   letter-spacing: 1px;
+  color: var(--header-text);
 }
 
 .title {
@@ -124,7 +143,7 @@ section:last-of-type {
 h2 {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: white;
+  color: var(--text-primary);
   position: relative;
   padding-bottom: 15px;
   text-align: center;
@@ -221,7 +240,7 @@ h2::after {
 .timeline-title {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: white;
+  color: var(--text-primary);
 }
 
 /* --- Skills (List Format) --- */
@@ -309,7 +328,7 @@ h2::after {
 
 .project-title {
   font-size: 1.4rem;
-  color: white;
+  color: var(--text-primary);
   margin-right: 10px;
 }
 
@@ -391,6 +410,35 @@ footer {
   transform: translateY(0);
 }
 
+/* --- Theme Toggle Button --- */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--card-color);
+  color: var(--primary-accent);
+  border: 2px solid var(--primary-accent);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+}
+
 /* --- Responsive Design --- */
 @media screen and (max-width: 768px) {
   h1 {
@@ -416,5 +464,12 @@ footer {
   }
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
   }
 }

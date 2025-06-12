@@ -1,4 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // --- Theme Toggle Functionality ---
+  const themeToggle = document.querySelector(".theme-toggle");
+  const themeIcon = themeToggle.querySelector("i");
+
+  // Function to set theme
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+
+    // Update button icon
+    if (theme === "light") {
+      themeIcon.className = "fas fa-moon";
+    } else {
+      themeIcon.className = "fas fa-sun";
+    }
+  }
+
+  // Check for saved user preference, if any
+  const savedTheme = localStorage.getItem("theme");
+
+  // If we have a saved theme, use it
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else {
+    // Otherwise, try to detect user's preference
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    if (prefersDarkScheme.matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }
+
+  // Listen for theme toggle button click
+  themeToggle.addEventListener("click", function () {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  });
+
   // --- Typing Effect ---
   const typingElement = document.querySelector(".typing-effect");
   const text = "Frontend Developer";
