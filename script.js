@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
   // --- Theme Toggle Functionality ---
   const themeToggle = document.querySelector(".theme-toggle");
   const themeIcon = themeToggle.querySelector("i");
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- Typing Effect ---
   const typingElement = document.querySelector(".typing-effect");
-  const text = "Frontend Developer";
+  const text = "Front-end Developer";
   let index = 0;
   let isDeleting = false;
 
@@ -82,3 +82,4 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(el);
   });
 });
+
